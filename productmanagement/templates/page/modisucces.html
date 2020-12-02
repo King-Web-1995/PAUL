@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html'%}
+{% block content %}
+<div class="container">
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nom</label>
+      <input type="text" name="nom" class="form-control" id="inputEmail4" placeholder="Nom du produit">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Prix</label>
+      <input type="number" name="prix" class="form-control" id="inputPassword4" placeholder="Prix du produit" min="100" max="500000">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputAddress2">Quantité</label>
+    <input type="number" name="quantite" class="form-control" id="inputAddress2" placeholder="Quantité du produit" min="1" max="1000">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputState">Catégorie</label>
+      <select id="inputState" class="form-control" name="categorie">
+        <option selected>Choisissez la catégorie</option>
+        {% for categorie in categories %}
+        <option value="{{categorie.nom}}">{{categorie.nom}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputCity">Image du produit</label>
+      <input type="file" class="form-control" id="inputCity" name="image">
+    </div>
+  </div>
+  <div class="form-group">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Creer</button>
+</form>
+</div>
+{% endblock %}
